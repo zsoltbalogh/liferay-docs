@@ -19,72 +19,55 @@ immediately. This is a short-term fix that solves the issue for the customer as
 quickly as possible. Hotfixes can patch both the core and the application
 suites.
 
-Now that you know what patching is all about, let's check out the tool. 
-
 ## Installing the Patching Tool [](id=installing-the-patching-tool)
 
-If you're using a Liferay bundle, congratulations! The Patching Tool is already
-installed. Your job isn't done yet, however, because Liferay *might* have
-updated the Patching Tool. Always check the Customer Portal to see if the
-Patching Tool has been updated first. Even if you forget to check, the
-Patching Tool tells you if it needs to be updated when you run it. A lot of
-planning and forethought has gone into the patching system to make it run as
-smoothly as possible.
+If you're using a Liferay bundle, the Patching Tool is already
+installed. When an update is necessary to install a patch, the patching tool will automatically ask for an update.
 
 You follow the same procedure whether you're installing or upgrading the
-Patching Tool. Once you've obtained it from the customer portal, unzip it to the
-Liferay Home folder. This is the folder where you've placed your
-`portal-ext.properties` file and where by default the `data` folder resides.
-This is generally one folder up from where your application server is installed,
-but some application servers are different. If you don't know where Liferay Home
-is on your system, check [the installation documentation](/discover/deployment/-/knowledge_base/7-0/installation-and-setup) 
-to see where this folder is for your specific application server.
+Patching Tool. Once you've obtained it from the Customer Portal, unzip it anywhere in the filesystem. Generally it's a good idea to keep it together with the @product@ installation.
 
-If you're upgrading the Patching Tool, all you need to do is unzip the new
-version on top of the old version. Note that if you're doing this on LUM (Linux,
-Unix, Mac) machines, you'll need to make the `patching-tool.sh` script
-executable.
+Upgradeing is easy: override the previous Patching Tool with newest one by overriding the files.
 
-## Auto Discovery [](id=auto-discovery)
+## Executables [](id=executables)
 
-After the Patching Tool is installed, you need to let it auto-discover your
-Liferay installation. Then it will determine what your release level is and what
-your application server environment is. To do this, you first have to define for
-the tool where [Liferay Home](/discover/deployment/-/knowledge_base/7-0/installing-liferay-portal#liferay-home)
-is by creating a hidden file there. If you're using a Liferay bundle, this step
-has been completed for you. If, however, you've installed @product@ manually,
-you'll have to create this file manually. 
+The Patching Tool is a Java based application. The distribution contains shell / .bat scripts to make it easier to use. On Unix systems you can simply run:
 
-Go to your Liferay Home folder (the folder that by default contains the `data`,
-`osgi`, and `tools` folders) and create a file called `.liferay-home`. Because
-it starts with a dot, this file is a hidden file on Unix-style operating
-systems. This file serves as a marker for your Liferay Home folder. 
+    ./patching-tool.sh parameters
 
-Now you're ready to run auto-discovery:
+On Windows you should run:
 
-    ./patching-tool.sh auto-discovery
- 
-or on Windows: 
+    patching-tool parameters
+
+This document will continue using the latter method, on Unix, please replace the name of the executable before running the scripts.
+
+## Basic configuration [](id=basic-configuration)
+
+The Patching Tool configuration can be prepared two ways:
+1) Auto configuration by executing the `auto-discovery` command
+2) Preparing the configuration file manually
+
+The automatic configuration is a simple helper which prepares the configuration files by looking for files in the filesystem. By default the Patching Tool will start looking for the @product@ files from the parent folder. To start the process, you's simply need to run:
 
     patching-tool auto-discovery
- 
-If you've installed the Patching Tool in a non-standard location, you'll have to
-give this command another parameter to point it to your Liferay installation.
-For example, if you've installed a Liferay/Tomcat bundle in `/opt/Liferay`,
-you'd issue this command: 
 
-    ./patching-tool.sh auto-discovery /opt/Liferay/tomcat-8.0.32
- 
+If you are running the patching tool from a different location, you can additionally specify the folder as a parameter:
 
-This writes your server's configuration to a file called `default.properties`.
-The Patching Tool uses the properties in this file to find the files it needs to
-patch. When you're finished, your `default.properties` file looks similar to
-this: 
+    patching-tool auto-discovery /opt/Liferay/tomcat-8.0.32
 
+If you did not use an prepackaged installation, the Patching Tool might not find the [Liferay Home](/discover/deployment/-/knowledge_base/7-0/installing-liferay-portal#liferay-home) folder automatically. In this case, the Patching Tool will give an error message with a sample configuration:
+
+    The .liferay-home has not been detected in the given directory tree.
+
+    Configuration:
     patching.mode=binary
-    war.path=../tomcat-8.0.32/webapps/ROOT
-    global.lib.path=../tomcat-8.0.32/lib/ext
-    liferay.home=/opt/liferay-dxp-digital-enterprise-7.0-ga1/
+    war.path=../tomcat-8.0.32/webapps/ROOT/
+    global.lib.path=../tomcat-8.0.32/lib/ext/
+    liferay.home=**[please enter manually]**
+
+    The configuration hasn't been saved. Please save this to the default.properties file.
+
+In this case you can either add the folder manually to the configuration or create the `.liferay-home` file and re-run the auto-discovery process.
 
 The properties above (described fully [below](#using-profiles-with-the-patching-tool)) 
 define the location of Liferay Home, the patching mode
@@ -105,19 +88,16 @@ its default location. If you've customized the location of the module framework,
 however, you'll have to specify the above locations. Since you moved them, you
 should know where they are. 
 
-There's one more property you'll have to specify, again, only if you have
-installed @product@ manually: 
-
-    target.platform.indexer.path=/opt/liferay-dxp-digital-enterprise-7.0-ga1/tools/portal-tools-target-platform-indexer-client/
-
-If you don't have the indexer client, you'll have to download it from the same
-location where you downloaded @product@, install it, and then use this property
-to point to it. 
-
 Now that you've installed the Patching Tool and run auto-discovery, you're ready
 to download and install patches. You can install patches manually or
 automatically. For automatic patch installation, you need to set up the Patching
 Tool Agent. This is presented next.
+
+$$$+
+
+**Checkpoint**: The patching tool is configured. When you run `patching-tool info` you receive information about the product version.
+
+$$$
 
 ### Configuring the Patching Tool Agent [](id=configuring-the-patching-tool-agent)
 
