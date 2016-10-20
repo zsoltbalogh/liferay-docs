@@ -1,5 +1,6 @@
-# Description
-Many enterprise environments utilize clustering for both scalability and availability. This page provides specific instructions for installing a basic configuration of Liferay DXP in a pre-existing clustered environment.
+#How to install @product@ in a clustered environment
+## Description
+Many enterprise environments utilize clustering for both scalability and availability. This page provides specific instructions for installing a basic configuration of @product@ in a pre-existing clustered environment.
 
 A common misconception is that by configuring Liferay, a high-availability / clustered environment is created automatically. However, by definition, a clustered environment includes load balancers, clustered application servers, and databases. Once the clustered environment is set up, Liferay can then be installed into that environment.
 
@@ -22,7 +23,7 @@ Additionally, Cluster Link must be enabled for cluster activation keys to work. 
 
 `cluster.link.enabled=true`
 
-## Database
+### Database
 
 Make sure all nodes are pointed to the same database. Configure the JDBC from portal-ext.properties or directly on the application server.
 
@@ -37,7 +38,7 @@ The portlet should show up on Node 2. Repeat with the nodes reversed to test the
 
 $$$
 
-## Document and Media Library Sharing
+### Document and Media Library Sharing
 
 Please note that the following properties are specifically for use with AdvancedFileSystemStore.
 
@@ -77,9 +78,9 @@ Note 4: The number of connections to the database is another factor. Consider in
 Note 5: For an in-depth description of each type of file store, see the admin guide for Liferay [https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/liferay-clustering-liferay-portal-6-2-user-guide-20-en](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/liferay-clustering-liferay-portal-6-2-user-guide-20-en) or Guide for Document and Media Library article: [https://www.liferay.com/group/customer/kbase/-/knowledge_base/article/14370777](https://www.liferay.com/group/customer/kbase/-/knowledge_base/article/14370777)
 //TODO: fix links to point to DXP
  
-## Search and Index Sharing
+### Search and Index Sharing
 
-Starting from Liferay DXP the search engine needs to be separated from the main Liferay server for scalability reasons. For it there are two ways to achieve it: [Elasticsearch](https://customer.liferay.com/documentation/knowledge-base/-/kb/170088) or [Solr](https://customer.liferay.com/documentation/knowledge-base/-/kb/151456).
+Starting from @product@ the search engine needs to be separated from the main Liferay server for scalability reasons. For it there are two ways to achieve it: [Elasticsearch](https://customer.liferay.com/documentation/knowledge-base/-/kb/170088) or [Solr](https://customer.liferay.com/documentation/knowledge-base/-/kb/151456).
 //TODO: fix links to point to the deployment guide
  
 +$$$
@@ -97,7 +98,7 @@ $$$
 Note : Storing indexes locally is not an option anymore: `lucene.replicate.write=true` is deprecated.
 
  
-## Distributed Caching (Multicast or Unicast?)
+### Distributed Caching (Multicast or Unicast?)
 
 Distributed caching allows a Liferay cluster to share cache content among multiple cluster nodes via Ehcache. Liferay has a specific article on [managing a distributed cache](https://www.liferay.com/group/customer/knowledge/kb/-/knowledge_base/article/37840259).
 
@@ -107,7 +108,7 @@ Note 1: Ehcache has a lot of different modifications that can be done to cache c
 Note 2: To learn more about Ehcache's default cache replication techniques or to learn how to deploy the tuning cache to the portal, please see the [Advanced Ehcache Configuration](https://www.liferay.com/group/customer/kbase/-/knowledge_base/article/14624847) knowledge base article.
 
  
-## Hot Deploy Folders
+### Hot Deploy Folders
 
 Keep in mind that by default all deployable plugins must be deployed separately to all nodes.
 
@@ -115,7 +116,7 @@ Keep in mind that by default all deployable plugins must be deployed separately 
 However, every application server has a way of configuring "server farms" so that deploying to one location causes deployment to all nodes. Please see each application server's documentation for instructions.
 
  
-## Other Issues to Check
+### Other Issues to Check
 
 * On some operating systems, IPv4 and IPv6 addresses are mixed so clustering will not work. To solve this, add the following JVM startup parameter:
    `-Djava.net.preferIPv4Stack=true`
@@ -125,7 +126,7 @@ However, every application server has a way of configuring "server farms" so tha
     `module.framework.properties.osgi.console=localhost:11311`
 
  
-# Additional Information
+## Additional Information
 The links contained in this article will be updated as we create new content. Thank you for your understanding and patience. 
 
 Related Links:
@@ -136,4 +137,4 @@ Related Links:
 
 [How to Cluster with TCP Unicast](https://customer.liferay.com/documentation/knowledge-base/-/kb/53747)
 
-[Liferay's DXP whitepapers](https://customer.liferay.com/documentation/knowledge-base/-/kb/298611), including the [deployment checklist](https://www.liferay.com/documents/10182/1645493/Liferay+DXP+Deployment+Checklist/bf452028-62f2-49bd-b024-94ce04a0c941) and ["Upgrading to Liferay DXP"](https://www.liferay.com/documents/10182/1645493/How+to+Upgrade+to+Liferay+DXP/6d28e96b-7de3-44c7-9692-3631c7d226fc)
+[Liferay's DXP whitepapers](https://customer.liferay.com/documentation/knowledge-base/-/kb/298611), including the [deployment checklist](https://www.liferay.com/documents/10182/1645493/Liferay+DXP+Deployment+Checklist/bf452028-62f2-49bd-b024-94ce04a0c941) and ["Upgrading to @product@"](https://www.liferay.com/documents/10182/1645493/How+to+Upgrade+to+Liferay+DXP/6d28e96b-7de3-44c7-9692-3631c7d226fc)
