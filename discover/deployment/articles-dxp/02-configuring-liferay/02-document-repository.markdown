@@ -6,7 +6,7 @@ of the server @product@'s running on. The store's default root directory is
 `[Liferay Home]/data/document_library`. You can specify a different root
 directory from within [System Settings](/discover/portal/-/knowledge_base/7-0/system-settings).
 To access System Settings, open the *Menu*
-(![Menu](../../../images/icon-menu.png)) and navigate to *Control Panel &rarr;
+(![Menu](../../images/icon-menu.png)) and navigate to *Control Panel &rarr;
 Configuration &rarr; System Settings*. From *System Settings*, navigate to
 *Platform* and then search for and select the entry *Simple File System Store*.
 For the store's *Root dir* value, specify a path relative to the [Liferay Home](/discover/deployment/-/knowledge_base/7-0/installing-liferay-portal#liferay-home)
@@ -148,7 +148,7 @@ If file were already uploaded to @product@, it is not enough to change the `dl.s
 property in the `portal-ext.properties`. The steps to follow in this case are
 the followings:
 1. Open the *Menu*
-(![Menu](../../../images/icon-menu.png)) and navigate to *Control Panel &rarr;
+(![Menu](../../images/icon-menu.png)) and navigate to *Control Panel &rarr;
  Configuration &rarr; Server Administration &rarr; Data Migration*,
 2. Change the value of the `dl.store.impl` dropdown to the desired storage type,
 3. Click on Execute,
