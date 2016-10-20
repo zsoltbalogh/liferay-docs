@@ -1,11 +1,10 @@
 # Description
-Many enterprise environments utilize clustering for both scalability and availability. This article provides specific instructions for installing a basic configuration of Liferay DXP in a pre-existing clustered environment.
+Many enterprise environments utilize clustering for both scalability and availability. This page provides specific instructions for installing a basic configuration of Liferay DXP in a pre-existing clustered environment.
 
-A common misconception is that by configuring Liferay, a high-availability / clustered environment is created automatically. However, by definition, a clustered environment includes load balancers, clustered application servers, and databases. Once the clustered environment is set up, Liferay can then be installed into that environment. The article extends the Liferay Clustering section of the User Guide by giving further instructions.
+A common misconception is that by configuring Liferay, a high-availability / clustered environment is created automatically. However, by definition, a clustered environment includes load balancers, clustered application servers, and databases. Once the clustered environment is set up, Liferay can then be installed into that environment.
 
-Users can also determine whether the cluster uses multicast or unicast settings. By default, Liferay uses multicast clustering. In the portal-ext.properties, users can change the multicast port numbers so that they do not conflict with other instances running. If the user decides to use unicast cluster, users have several options available that are supported by Liferay: TCP, Amazon S3, File Ping, and JDBC Ping.
+Users can also determine whether the cluster uses multicast or unicast settings. By default, @product@ uses multicast clustering. In the portal-ext.properties, users can change the multicast port numbers so that they do not conflict with other instances running. If the user decides to use unicast cluster, users have several options available that are supported by Liferay: TCP, Amazon S3, File Ping, and JDBC Ping.
 
-# Resolution
 To set up a fully clustered environment:
 
 * Cluster Activation Keys need to be deployed on each node.
@@ -15,50 +14,52 @@ To set up a fully clustered environment:
 * The cache is distributed.
 * Hot deploy folders are configured for each node if not using server farms.
 
-##Cluster Activation Keys
+## Cluster Activation Keys
 
-Each node in the cluster needs to have a cluster activation key deployed in order for Liferay Digital Experience Platform to run properly. For more on obtaining a cluster activation key, click here.
+Each node in the cluster needs to have a cluster activation key deployed in order for @product@ to run properly.
 
 Additionally, Cluster Link must be enabled for cluster activation keys to work. To do this, set the following in portal-ext.properties:
 
 `cluster.link.enabled=true`
 
-##Database
+## Database
 
-Make sure all nodes are pointed to the same Liferay database. Configure the JDBC from portal-ext.properties or directly on the application server.
+Make sure all nodes are pointed to the same database. Configure the JDBC from portal-ext.properties or directly on the application server.
 
-##To Test:
++$$$
 
-* Start both Tomcats (Nodes 1 and 2) **sequentially**. The reason is so that the Quartz Scheduler can elect a master node!
+**Checkpoint**: please verify the steps above by following these steps:
+* Start both application servers / containers (Nodes 1 and 2) **sequentially**. The reason is so that the Quartz Scheduler can elect a master node!
 * Log in and add a portlet (e.g. Hello Velocity) to Node 1.
 * On Node 2, refresh the page.
 
-The addition should show up on Node 2. Repeat with the nodes reversed to test the other node.
+The portlet should show up on Node 2. Repeat with the nodes reversed to test the other node.
 
- 
-##Document and Media Library Sharing
+$$$
+
+## Document and Media Library Sharing
 
 Please note that the following properties are specifically for use with AdvancedFileSystemStore.
 
  
 Set the following in portal-ext.properties:
+    
+    dl.store.file.system.root.dir=
+    dl.store.impl=com.liferay.portal.store.file.system.AdvancedFileSystemStore
 
- `dl.store.file.system.root.dir=`
+The nodes in the cluster should reflect the same properties between one another when referencing the Document Library. Otherwise, data corruption and indexing issues may occur if each node is referencing separate Document Library repositories. The folders should point to the same physical folder.
 
-`dl.store.impl=com.liferay.portal.store.file.system.AdvancedFileSystemStore`
++$$$
 
- 
-The nodes in the cluster should reflect the same properties between one another when referencing the Document Library. Otherwise, data corruption and indexing issues may occur if each node is referencing separate Document Library repositories.
-
- 
-## To Test:
+**Checkpoint**: please verify the steps above by following these steps:
 
 * On Node 1, upload a document to the Document Library.
 * On Node 2, download the document.
 
 If successful, the document should download. Repeat with the nodes reversed.
 
- 
+$$$
+
 Note 1: Advanced File System Store is an available option for high availability environments. Besides Advanced File System Store, there are other options of sharing the Document and Media Library. Keep in mind that the different types of file stores cannot communicate with each other, so changing from one to the other will cause the portal to be unable to read previously uploaded files. If the user needs to change the type of store and preserve previously uploaded files, execute a File Store migration.
 
  
@@ -74,14 +75,16 @@ Note 4: The number of connections to the database is another factor. Consider in
 
  
 Note 5: For an in-depth description of each type of file store, see the admin guide for Liferay [https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/liferay-clustering-liferay-portal-6-2-user-guide-20-en](https://www.liferay.com/documentation/liferay-portal/6.2/user-guide/-/ai/liferay-clustering-liferay-portal-6-2-user-guide-20-en) or Guide for Document and Media Library article: [https://www.liferay.com/group/customer/kbase/-/knowledge_base/article/14370777](https://www.liferay.com/group/customer/kbase/-/knowledge_base/article/14370777)
-
+//TODO: fix links to point to DXP
  
 ## Search and Index Sharing
 
 Starting from Liferay DXP the search engine needs to be separated from the main Liferay server for scalability reasons. For it there are two ways to achieve it: [Elasticsearch](https://customer.liferay.com/documentation/knowledge-base/-/kb/170088) or [Solr](https://customer.liferay.com/documentation/knowledge-base/-/kb/151456).
-
+//TODO: fix links to point to the deployment guide
  
-## To Test:
++$$$
+
+**Checkpoint**: please verify the steps above by following these steps:
 
 On Node 1, go to Control Panel -> Users and create a new user
 
@@ -89,6 +92,7 @@ On Node 2, go to Control Panel -> Users. Verify that the new user has been creat
 
 If successful, the new user will display in the other node without needing to re-index. Do the same test with the nodes reversed.
 
+$$$
  
 Note : Storing indexes locally is not an option anymore: `lucene.replicate.write=true` is deprecated.
 
@@ -125,7 +129,7 @@ However, every application server has a way of configuring "server farms" so tha
 The links contained in this article will be updated as we create new content. Thank you for your understanding and patience. 
 
 Related Links:
-
+//TODO: fix links
 [Liferay Clustering](https://customer.liferay.com/documentation/6.2/deploy/-/official_documentation/deployment/liferay-clustering)
 
 [Managing Liferay's Distributed Cache](https://customer.liferay.com/documentation/knowledge-base/-/kb/122013)
