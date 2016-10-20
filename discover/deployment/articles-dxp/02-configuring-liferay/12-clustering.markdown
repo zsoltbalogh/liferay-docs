@@ -28,7 +28,7 @@ Additionally, Cluster Link must be enabled for cluster activation keys to work. 
 
 Make sure all nodes are pointed to the same Liferay database. Configure the JDBC from portal-ext.properties or directly on the application server.
 
-###To Test:
+**To Test**:
 
 * Start both Tomcats (Nodes 1 and 2) **sequentially**. The reason is so that the Quartz Scheduler can elect a master node!
 * Log in and add a portlet (e.g. Hello Velocity) to Node 1.
@@ -52,7 +52,7 @@ Set the following in portal-ext.properties:
 The nodes in the cluster should reflect the same properties between one another when referencing the Document Library. Otherwise, data corruption and indexing issues may occur if each node is referencing separate Document Library repositories.
 
  
-### To Test:
+ **To Test**:
 
 * On Node 1, upload a document to the Document Library.
 * On Node 2, download the document.
@@ -82,7 +82,7 @@ Note 5: For an in-depth description of each type of file store, see the admin gu
 Starting from Liferay DXP the search engine needs to be separated from the main Liferay server for scalability reasons. For it there are two ways to achieve it: [Elasticsearch](https://customer.liferay.com/documentation/knowledge-base/-/kb/170088) or [Solr](https://customer.liferay.com/documentation/knowledge-base/-/kb/151456).
 
  
-### To Test:
+**To Test**:
 
 On Node 1, go to Control Panel -> Users and create a new user
 
