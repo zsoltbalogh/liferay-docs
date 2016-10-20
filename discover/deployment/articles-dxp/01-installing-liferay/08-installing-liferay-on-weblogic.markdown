@@ -245,9 +245,15 @@ apps, you'll want to protect your DXP instance and your WebLogic server from
 security threats. To do so, you must enable Java Security on your WebLogic 
 server and specify a security policy to grant Liferay DXP access to your server. 
 
-First, you'll grant Liferay access to your server. This configuration opens all 
-permissions--you can fine-tune your policy's permissions later. If it doesn't 
-already exist, create a policy file named `weblogic.policy` in your 
+First, you'll grant Liferay access to your server. 
+
++$$$
+
+This configuration opens all permissions--you can fine-tune your policy's permissions later. 
+
+$$$
+
+If it doesn't already exist, create a policy file named `weblogic.policy` in your 
 `$WL_HOME/server/lib` folder. Replace its contents with the following: 
 
     grant {
