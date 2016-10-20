@@ -2,7 +2,7 @@
 
 If you want a fresh installation of Liferay on Wildfly 10, simply download a
 Liferay Wildfly bundle from
-[https://www.liferay.com/downloads/liferay-portal/available-releases](https://www.liferay.com/downloads/liferay-portal/available-releases).
+[https://www.liferay.com/downloads/liferay-portal/available-releases](https://www.liferay.com/downloads/liferay-portal/available-releases). 
 Even if you want to manually install Liferay on an existing Wildfly 10
 application server, it can be helpful to download a Liferay Wildfly bundle. The
 bundle contains many required dependencies and configuration files. Before
@@ -16,12 +16,35 @@ Installing Liferay manually requires these basic steps:
 - Configuring your application server for Liferay
 - Installing the Liferay WAR file to your application server
 
+# Installing Liferay DXP on Wildfly 10 [](id=installing-liferay-dxp-on-wildfly-10)
+
+
+For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
+[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
+or the customer portal on 
+[liferay.com](https://www.liferay.com/). 
+You'll need the following files:
+
+- `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
+
+- `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
+  dependencies
+
+- `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
+  dependencies
+
+Without any further ado, get ready to install Liferay DXP in Wildfly.
+
++$$$
+
 **Liferay Home** is one folder above Wildfly's install location. *Liferay
 Home* refers to the folder containing your Wildfly server folder. When Liferay
 is installed on Wildfly, the Liferay Home folder contains the Wildfly server
 folder as well as `data`, `deploy`, `logs`, and `osgi` folders. You'll also
 see the term `$WILDFLY_HOME` used in this guide. `$WILDFLY_HOME` refers to your
 Wildfly server folder. This folder is usually named `wildfly-[version]`.
+
+$$$
 
 ## Installing Liferay Dependencies [](id=installing-liferay-dependencies)
 
@@ -355,8 +378,14 @@ the `standalone.conf.bat` file earlier in the *Configuring Wildfly* section. The
 Java security policy. If you have not set these options, you'll need to do so
 before using Java security.
 
++$$$
+
 This configuration opens up all permissions. You can tune the permissions in
-your policy later. Create the `$WILDFLY_HOME/bin/server.policy` file and add the
+your policy later. 
+
+$$$
+
+Create the `$WILDFLY_HOME/bin/server.policy` file and add the
 following contents:
 
     grant {
