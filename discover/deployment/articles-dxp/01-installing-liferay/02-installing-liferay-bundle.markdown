@@ -29,7 +29,9 @@ In the Liferay Home folder there are folders for various purposes:
         - `deploy`
         - `logs`
         - `osgi`
+        - `patching-tool`
         - [Application Server]
+        - `tools`
 
 `data`: This folder is used to store an embedded HSQL database, @product@'s
 file repository, and @product@'s search indexes. @product@ is initially configured
@@ -46,6 +48,10 @@ trying to diagnose a problem.
 
 `osgi`: All the JAR files and a few configuration files for @product@'s OSGi
 runtime belong in this folder.
+
+`patching-tool`: This folder contains patches for @product@ and files for installing the patches
+
+`tools`: For portal upgrade and target platform indexer
 
 **[Application Server]:** The name of this folder is different depending on
 the bundle you're using. This folder contains the application server in
