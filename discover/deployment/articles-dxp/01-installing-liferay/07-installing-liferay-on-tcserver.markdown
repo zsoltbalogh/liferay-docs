@@ -21,6 +21,25 @@ Installing Liferay manually requires these basic steps:
 - Installing Liferay by providing the WAR file to your application server and
   the OSGi folder for Liferay
 
+# Installing Liferay DXP on tc Server [](id=installing-liferay-dxp-on-tc-server)
+
+For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
+[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
+or the customer portal on 
+[liferay.com](https://www.liferay.com/). 
+You'll need the following files:
+
+- `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
+
+- `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
+  dependencies
+
+- `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
+  dependencies
+
+Without any further ado, get ready to install Liferay DXP in tc Server.
+
+
 +$$$
 
 **Note:** You'll see the term *Liferay Home* used in this installation guide.
@@ -248,6 +267,13 @@ To enable PACL, you need to enable Tomcat’s security manager. Make sure
     grant {
         permission java.security.AllPermission;
     };
+
++$$$
+
+This configuration opens up all permissions. You can tune the permissions in
+your policy later. 
+
+$$$
 
 Open `$TCSERVER_INSTANCE_HOME/bin/setenv.sh` if on Linux, Unix, or Mac OS, or
 `setenv.bat` if on Windows. Enable the security manager by inserting the
