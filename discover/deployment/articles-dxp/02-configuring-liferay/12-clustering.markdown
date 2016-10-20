@@ -69,7 +69,7 @@ Note 2: If storing your documents in file system is not an option then DBStore s
 `dl.store.impl=com.liferay.portal.store.db.DBStore`
 
  
-Note 3: JCRStore on a database is another option. Because Jackrabbit does not create indexes on its own tables, over time this may be a performance penalty. Users must change manually the index for the primary key columns for all the Jackrabbit tables. Other configuration to take note of is the limit of the amount of connections to your database.
+Note 3: JCRStore on a database is another option. Because Jackrabbit does not create indexes on its own tables, over time this may be a performance penalty. Users must change manually the index for the primary key columns for all the Jackrabbit tables.
 
  
 Note 4: The number of connections to the database is another factor. Consider increasing the number of database connections to the application server.
