@@ -1,4 +1,4 @@
-# Using Solr [](id=using-solr)
+# Configuring Solr [](id=configuring-solr)
 
 Solr is a popular enterprise search platform build on Apache Lucene. It's
 popular for its reliability, scalability, and fault tolerance. Read more about
@@ -11,20 +11,6 @@ previous version of Liferay, or your deployment system (for example, your OS or
 JVM) [isn't supported by Elasticsearch](https://www.elastic.co/support/matrix),
 you might choose to use Solr to search and index your Liferay data.
 
-Liferay's support for Solr is compatible with Solr versions 5.2.x through 5.5.x.
-To make Liferay and Solr talk to each other, you'll need to install the Liferay
-Solr adapter. There are two ways to do this:
-
-1. Navigate to the [Liferay Marketplace](https://web.liferay.com/marketplace/)
-   website and download the LPKG file for Liferay (CE) Solr 5 Search
-   Engine. Once you do, copy the LPKG to your `Liferay_Home/osgi/marketplace`
-   folder.
-
-2. In your running Liferay instance, navigate to *Control Panel* &rarr; *Apps*
-   &rarr; *Store*. Sign in using your credentials, search for Solr Search
-   Engine, and purchase (it's free) the Liferay (CE) Solr 5 Search
-   Engine entry.
-
 This guide leads you through the process of installing and configuring Solr.
 As you proceed, these terms will be useful to keep in mind:
 
@@ -34,7 +20,11 @@ As you proceed, these terms will be useful to keep in mind:
 *Liferay Home*: The root folder of your Liferay installation. It contains
 the `osgi`, `deploy`, `data`, and `license` folders, among others.
 
-Before configuring Liferay for Solr, you need to install and set up Solr.
+## Naming Conventions and Compatibility [](id=naming-conventions-and-compatibility)
+
+- **Liferay Solr Adapter**: shortened form to refer to Liferay’s Solr connector.
+- **Liferay Solr 5 Search Engine**: the name of Liferay’s Solr connector app for @product@ on [Liferay Marketplace](https://web.liferay.com/marketplace/-/mp/application/78803813) which contains the Liferay Portal Search Solr OSGi bundle. The latest version is compatible with deployments using Solr 5.2.x through Solr 5.5.x.
+- **Liferay Portal Search Solr**: the name of the OSGi bundle defined in `com.liferay.portal.search.solr.jar#META-INF/MANIFEST.MF (Bundle-Name)`. Provides the integration between Liferay and Solr.
 
 ## Installing and Configuring Solr 5 [](id=installing-and-configuring-solr-5)
 
@@ -107,6 +97,19 @@ Solr is now installed. Next install and configure Liferay's Solr adapter.
 
 ## Installing and Configuring the Liferay Solr Adapter [](id=installing-and-configuring-the-liferay-solr-adapter)
 
+To make Liferay and Solr talk to each other, you'll need to install the Liferay
+Solr adapter. There are two ways to do this:
+
+1. Navigate to the [Liferay Marketplace](https://web.liferay.com/marketplace/)
+   website and download the LPKG file for Liferay (CE) Solr 5 Search
+   Engine. Once you do, copy the LPKG to your `Liferay_Home/osgi/marketplace`
+   folder.
+
+2. In your running Liferay instance, navigate to *Control Panel* &rarr; *Apps*
+   &rarr; *Store*. Sign in using your credentials, search for Solr Search
+   Engine, and purchase (it's free) the Liferay (CE) Solr 5 Search
+   Engine entry.
+
 Since Elasticsearch is the default search engine in Liferay, the Elasticsearch
 adapter is already installed and running. Stop it before configuring the Solr
 adapter.
@@ -152,6 +155,48 @@ configurations.
 
 ![Figure 2: You can configure Solr from Liferay's System Settings application.
 This is most useful during development and testing.](../../../images/solr-system-settings.png)
+
+### Liferay Solr Adapter Configuration Overview [](id=liferay-solr-adapter-configuration-overview)
+
+The following section outlines the configuration settings available in the specified version below for the Liferay Solr Adapter.
+
+**App Version**: 1.0.0
+**Bundle Version**: 2.0.6
+
+#### **SolrConfiguration**
+
+* **Class**: `com.liferay.portal.search.solr.configuration.SolrConfiguration`
+* **OSGi Configuration File**: `LIFERAY_HOME/osgi/configs/com.liferay.portal.search.solr.configuration.SolrConfiguration[-default].cfg`
+* **Configuration Admin**: ⎅ → Control Panel → Configuration → System Settings → Foundation: SOLR
+
+##### Description of Properties
+
+```authenticationMode=BASIC```
+BASIC | CERT
+String
+*Select BASIC when connecting using Basic Auth, otherwise select CERT to connect using 2-way SSL authentication.*
+
+```clientType=REPLICATED```
+ CLOUD | REPLICATED
+ String
+*Select REPLICATED when connecting to a single-node Solr server, otherwise select CLOUD to connect SolrCloud.*
+
+```logExceptionsOnly=true```
+ true | false
+ boolean
+*Set to true to only log exceptions from Solr and not rethrow them.*
+
+```readURL=http://localhost:8080/solr/liferay```
+ String[]
+*URL to which Liferay will send search requests.  The read and write URLs may be different if you choose to implement dedicated servers for indexing (write) and searching (read).*
+
+```writeURL=http://localhost:8080/solr/liferay```
+ String[]
+*URL to which Liferay will send indexing requests.  The read and write URLs may be different if you choose to implement dedicated servers for indexing (write) and searching (read).*
+
+```zkHost=localhost:9983```
+ String
+*ZooKeeper host and port required when using the adapter in CLOUD mode to connect SolrCloud.*
 
 ## High Availability with SolrCloud [](id=high-availability-with-solrcloud)
 
@@ -266,3 +311,11 @@ constrained to use Solr or already a Solr expert, consider Elasticsearch for you
 search engine requirements. If you do use Solr, then you can tell all your
 colleagues that your Liferay installation's search capability is Solr powered
 (pun intended).
+
+# Apache Solr Reference Guides [](id=apache-solr-reference-guides)
+
+This articles covers only the basics to get Solr up and running with @product@, therefore we strongly recommend to read the official user guide for your Solr version.
+ - 5.2: http://archive.apache.org/dist/lucene/solr/ref-guide/apache-solr-ref-guide-5.2.pdf
+ - 5.3: http://archive.apache.org/dist/lucene/solr/ref-guide/apache-solr-ref-guide-5.3.pdf
+
+The reference guides for other versions are also available on the [archive download](http://archive.apache.org/dist/lucene/solr/ref-guide/) page.
