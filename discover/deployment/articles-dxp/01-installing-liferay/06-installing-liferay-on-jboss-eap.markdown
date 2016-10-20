@@ -1,5 +1,6 @@
 # Installing Liferay on JBoss EAP 6.4 [](id=installing-liferay-on-jboss-eap-6-4)
 
+
 Installing Liferay manually requires these basic steps:
 
 - Installing Liferay dependencies to your application server
@@ -12,12 +13,36 @@ also download the latest dependencies ZIP file and OSGi JARs ZIP file from
 [https://web.liferay.com/downloads/liferay-portal/available-releases](https://web.liferay.com/downloads/liferay-portal/available-releases)
 as well as the Liferay WAR file.
 
+# Installing Liferay DXP on JBoss EAP 6.4 [](id=installing-liferay-dxp-on-jboss-eap-6-4)
+
+For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
+[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
+or the customer portal on 
+[liferay.com](https://www.liferay.com/). 
+You'll need the following files:
+
+- `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
+
+- `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
+  dependencies
+
+- `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
+  dependencies
+
+Without any further ado, get ready to install Liferay DXP in Wildfly.
+
+
+
++$$$
+
 **Liferay Home** is one folder above JBoss's install location. *Liferay Home*
 refers to the folder containing your JBoss server folder. When Liferay is
 installed on JBoss, the Liferay Home folder contains the JBoss server folder as
 well as `data`, `deploy`, `logs`, and `osgi` folders. You'll also see the term
 `$JBOSS_HOME` used in this guide. `$JBOSS_HOME` refers to your JBoss server
 folder. This folder is usually named `jboss-eap-[version]`.
+
+$$$
 
 ## Installing Liferay Dependencies [](id=installing-liferay-dependencies)
 
@@ -354,8 +379,14 @@ the `standalone.conf.bat` file earlier in the *Configuring JBoss* section. The
 Java security policy. If you have not set these options, you'll need to do so
 before using Java security.
 
++$$$
+
 This configuration opens up all permissions. You can tune the permissions in
-your policy later. Create the `$JBOSS_HOME/bin/server.policy` file and add the
+your policy later. 
+
+$$$
+
+Create the `$JBOSS_HOME/bin/server.policy` file and add the
 following contents:
 
     grant {
