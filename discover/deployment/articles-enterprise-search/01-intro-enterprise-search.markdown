@@ -15,3 +15,26 @@ standalone, or remote, Elasticsearch server or cluster
 
 If you need to use Solr, it's also supported in Liferay, and you can read more
 about its configuration [here](/discover/deployment/-/knowledge_base/7-0/using-solr).
+
+
+## Platform Components [](id=platform-components)
+
+### Supported Platforms and Limitations [](id=supported-platforms-and-limitations)
+
+## Reference Architecture [](id=reference-architecture)
+
+### Development [](id=development)
+
+### System Integration [](id=system-integration)
+
+### UAT [](id=uat)
+
+### Production [](id=production)
+
+## Preparation [](id=preparation)
+
+### Operating System [](id=operating-system)
+
+### Storage [](id=storage)
+
+### Networking [](id=networking)
