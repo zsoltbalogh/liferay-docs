@@ -1,4 +1,4 @@
-# Configuring Elasticsearch for Liferay [](id=configuring-elasticsearch-for-liferay-0)
+# Configuring Elasticsearch [](id=configuring-elasticsearch)
 
 Liferay is an open source project, so you won't be surprised to learn that the
 default search engine that ships with Liferay is also an open source project.
@@ -340,13 +340,13 @@ lines. The syntax for that is straightforward and just requires appending each
 line with `\n\`, like this:
 
     additionalConfigurations=\
-                        cluster.routing.allocation.disk.threshold_enabled: false\n\
-                        cluster.service.slow_task_logging_threshold: 600s\n\
-                        index.indexing.slowlog.threshold.index.warn: 600s\n\
-                        index.search.slowlog.threshold.fetch.warn: 600s\n\
-                        index.search.slowlog.threshold.query.warn: 600s\n\
-                        monitor.jvm.gc.old.warn: 600s\n\
-                        monitor.jvm.gc.young.warn: 600s
+    cluster.routing.allocation.disk.threshold_enabled: false\n\
+    cluster.service.slow_task_logging_threshold: 600s\n\
+    index.indexing.slowlog.threshold.index.warn: 600s\n\
+    index.search.slowlog.threshold.fetch.warn: 600s\n\
+    index.search.slowlog.threshold.query.warn: 600s\n\
+    monitor.jvm.gc.old.warn: 600s\n\
+    monitor.jvm.gc.young.warn: 600s
 
 ## Troubleshooting Elasticsearch [](id=troubleshooting-elasticsearch)
 
@@ -375,4 +375,4 @@ configuring Shield to secure your Elasticsearch data.
 
 [Customizing Liferay Search](develop/tutorials/-/knowledge_base/7-0/customizing-liferay-search)
 
-<a name="footnote1">1</a> This is, of course, a nod to all those fans of [Boaty Mcboatface](http://www.theatlantic.com/international/archive/2016/05/boaty-mcboatface-parliament-lessons/482046). 
+<a name="footnote1">1</a> This is, of course, a nod to all those fans of [Boaty Mcboatface](http://www.theatlantic.com/international/archive/2016/05/boaty-mcboatface-parliament-lessons/482046).
