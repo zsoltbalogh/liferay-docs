@@ -1,6 +1,6 @@
-#How to install Liferay DXP in a clustered environment
+#How to install @product@ in a clustered environment
 ## Description
-Many enterprise environments utilize clustering for both scalability and availability. This article provides specific instructions for installing a basic configuration of Liferay DXP in a pre-existing clustered environment.
+Many enterprise environments utilize clustering for both scalability and availability. This article provides specific instructions for installing a basic configuration of @product@ in a pre-existing clustered environment.
 
 A common misconception is that by configuring Liferay, a high-availability / clustered environment is created automatically. However, by definition, a clustered environment includes load balancers, clustered application servers, and databases. Once the clustered environment is set up, Liferay can then be installed into that environment. The article extends the Liferay Clustering section of the User Guide by giving further instructions.
 
@@ -79,7 +79,7 @@ Note 5: For an in-depth description of each type of file store, see the admin gu
  
 ### Search and Index Sharing
 
-Starting from Liferay DXP the search engine needs to be separated from the main Liferay server for scalability reasons. For it there are two ways to achieve it: [Elasticsearch](https://customer.liferay.com/documentation/knowledge-base/-/kb/170088) or [Solr](https://customer.liferay.com/documentation/knowledge-base/-/kb/151456).
+Starting from @product@ the search engine needs to be separated from the main Liferay server for scalability reasons. For it there are two ways to achieve it: [Elasticsearch](https://customer.liferay.com/documentation/knowledge-base/-/kb/170088) or [Solr](https://customer.liferay.com/documentation/knowledge-base/-/kb/151456).
 
  
 ### To Test:
@@ -133,4 +133,4 @@ Related Links:
 
 [How to Cluster with TCP Unicast](https://customer.liferay.com/documentation/knowledge-base/-/kb/53747)
 
-[Liferay's DXP whitepapers](https://customer.liferay.com/documentation/knowledge-base/-/kb/298611), including the [deployment checklist](https://www.liferay.com/documents/10182/1645493/Liferay+DXP+Deployment+Checklist/bf452028-62f2-49bd-b024-94ce04a0c941) and ["Upgrading to Liferay DXP"](https://www.liferay.com/documents/10182/1645493/How+to+Upgrade+to+Liferay+DXP/6d28e96b-7de3-44c7-9692-3631c7d226fc)
+[Liferay's DXP whitepapers](https://customer.liferay.com/documentation/knowledge-base/-/kb/298611), including the [deployment checklist](https://www.liferay.com/documents/10182/1645493/Liferay+DXP+Deployment+Checklist/bf452028-62f2-49bd-b024-94ce04a0c941) and ["Upgrading to @poduct@"](https://www.liferay.com/documents/10182/1645493/How+to+Upgrade+to+Liferay+DXP/6d28e96b-7de3-44c7-9692-3631c7d226fc)
