@@ -15,24 +15,6 @@ as well as the Liferay WAR file.
 
 # Installing Liferay DXP on JBoss EAP 6.4 [](id=installing-liferay-dxp-on-jboss-eap-6-4)
 
-For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
-[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
-or the customer portal on 
-[liferay.com](https://www.liferay.com/). 
-You'll need the following files:
-
-- `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
-
-- `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
-  dependencies
-
-- `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
-  dependencies
-
-Without any further ado, get ready to install Liferay DXP in Wildfly.
-
-
-
 +$$$
 
 **Liferay Home** is one folder above JBoss's install location. *Liferay Home*
