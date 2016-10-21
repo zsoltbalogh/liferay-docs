@@ -1,8 +1,8 @@
 # Installing Liferay on Wildfly 10 [](id=installing-liferay-on-wildfly-10)
 
 If you want a fresh installation of Liferay on Wildfly 10, simply download a
-Liferay Wildfly bundle from
-[https://www.liferay.com/downloads/liferay-portal/available-releases](https://www.liferay.com/downloads/liferay-portal/available-releases). 
+Liferay Wildfly bundle from the [Customer Portal](https://web.liferay.com/group/customer/dxp/downloads/digital-enterprise).
+
 Even if you want to manually install Liferay on an existing Wildfly 10
 application server, it can be helpful to download a Liferay Wildfly bundle. The
 bundle contains many required dependencies and configuration files. Before
@@ -19,17 +19,14 @@ Installing Liferay manually requires these basic steps:
 # Installing Liferay DXP on Wildfly 10 [](id=installing-liferay-dxp-on-wildfly-10)
 
 
-For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
-[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
-or the customer portal on 
-[liferay.com](https://www.liferay.com/). 
+For Liferay DXP install, download Liferay DXP's WAR file and dependencies from the 
+Customer Portal](https://web.liferay.com/group/customer/dxp/downloads/digital-enterprise).
+
 You'll need the following files:
 
 - `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
-
 - `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
   dependencies
-
 - `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
   dependencies
 
