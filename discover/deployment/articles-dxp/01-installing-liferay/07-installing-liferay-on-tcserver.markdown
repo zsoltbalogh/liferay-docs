@@ -1,14 +1,9 @@
 # Installing Liferay on tc Server [](id=installing-liferay-on-tc-server)
 
-The easiest way to get Liferay running on tc Server is to [download a bundle](https://web.liferay.com/group/customer/downloads/portal/product). If
-that's not an option, you can install Liferay onto tc Server. In addition to a
-supported version of [tc Server](https://network.pivotal.io/products/pivotal-tcserver) (version 3 or
-higher), make sure you have acquired the following items (from [Liferay's customer portal](https://web.liferay.com/group/customer/downloads/portal/product))
+The first step of the installation is to download a supported version of [tc Server](https://network.pivotal.io/products/pivotal-tcserver). Make sure you have acquired the following items (from [Liferay's customer portal](https://web.liferay.com/group/customer/downloads/portal/product))
 
 -  A Liferay WAR file
-
 -  A compressed file with The OSGi JARs that contain much of Liferay's functionality
-
 -  A compressed file with the necessary Liferay dependencies and additional
    libraries you need for your installation
 
@@ -22,23 +17,6 @@ Installing Liferay manually requires these basic steps:
   the OSGi folder for Liferay
 
 # Installing Liferay DXP on tc Server [](id=installing-liferay-dxp-on-tc-server)
-
-For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
-[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
-or the customer portal on 
-[liferay.com](https://www.liferay.com/). 
-You'll need the following files:
-
-- `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
-
-- `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
-  dependencies
-
-- `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
-  dependencies
-
-Without any further ado, get ready to install Liferay DXP in tc Server.
-
 
 +$$$
 
