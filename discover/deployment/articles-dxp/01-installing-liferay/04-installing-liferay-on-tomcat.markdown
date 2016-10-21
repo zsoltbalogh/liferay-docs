@@ -14,6 +14,28 @@ Installing Liferay manually requires these basic steps:
 - Configuring Tomcat for Liferay
 - Installing the Liferay WAR file
 
+# Installing Liferay DXP on Tomcat 8 [](id=installing-liferay-dxp-on-tomcat-8)
+
+For Liferay DXP install, download Liferay DXP's WAR file and dependencies from 
+[http://files.liferay.com/private/ee](http://files.liferay.com/private/ee), 
+or the customer portal on 
+[liferay.com](https://www.liferay.com/). 
+You'll need the following files:
+
+- `liferay-dxp-digital-enterprise-[version].war`: Liferay DXP WAR file
+
+- `liferay-dxp-digital-enterprise-dependencies-[version].zip`: Liferay DXP 
+  dependencies
+
+- `liferay-dxp-digital-enterprise-osgi-[version].zip`: Liferay DXP OSGi 
+  dependencies
+
+Without any further ado, get ready to install Liferay DXP in Tomcat.
+
+
+
++$$$
+
 You'll see the term *Liferay Home* used in this installation guide. *Liferay
 Home* refers to the folder containing your Tomcat server folder. When Liferay
 is installed on Tomcat, the Liferay Home folder contains the Tomcat server
@@ -21,6 +43,8 @@ folder as well as `data`, `deploy`, `license`, and `osgi` folders. You'll also
 see the term `$TOMCAT_HOME` used in this guide. `$TOMCAT_HOME` refers to your
 Tomcat server folder. This folder is usually named `tomcat-[version]` or
 `apache-tomcat-[version]`.
+
+$$$
 
 ## Installing Liferay Dependencies [](id=installing-liferay-dependencies)
 
