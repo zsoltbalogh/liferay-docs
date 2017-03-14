@@ -25,8 +25,8 @@ project. The Themes Generator is a Node.js-based tool that gives you access to
 an array of  [theme Gulp tasks](/develop/reference/-/knowledge_base/7-0/theme-gulp-tasks),
 that facilitate developing and managing themes. 
 
-The *upgrade* Gulp task upgrades Liferay 6 themes to @product-ver@. For details,
-refer to the [Upgrading Themes](/develop/tutorials/-/knowledge_base/7-0/themelets/upgrading-themes)
+The *upgrade* Gulp task upgrades Liferay Portal 6 themes to @product-ver@. For details,
+refer to the [Upgrading Themes](/develop/tutorials/-/knowledge_base/7-0/upgrading-themes)
 tutorial. 
 
 In addition to the *upgrade* task, there are tasks for building and deploying
@@ -42,7 +42,7 @@ As you can see, the Themes Generator, Node.js, and Gulp development tools offer
 a lot to a Liferay theme developer.
 
 This tutorial assumes that you have already installed the [Themes Generator](/develop/tutorials/-/knowledge_base/7-0/themes-generator)
-and have an existing Liferay 6.2 theme that was developed with the Plugins SDK.
+and have an existing Liferay Portal 6.2 theme that was developed with the Plugins SDK.
 
 ## Importing Your 6.2 Theme [](id=importing-your-6-2-theme)
 

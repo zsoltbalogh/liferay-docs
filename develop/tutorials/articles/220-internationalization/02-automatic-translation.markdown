@@ -1,7 +1,8 @@
 # Automatically Generating Language Files [](id=automatically-generating-language-files)
 
-If you already have a default `Language.properties` file that holds [language keys for your user interface messages](/develop/tutorials/-/knowledge_base/7-0/localization-tutorial), or
-even a language module that holds these keys, you're in the right place.
+If you already have a default `Language.properties` file that holds
+[language keys for your user interface messages](/develop/tutorials/-/knowledge_base/7-0/localizing-your-application),
+or even a language module that holds these keys, you're in the right place.
 
 -  Instead of manually creating a language properties file for each locale
    that's supported by Liferay, you can get them all automatically generated for
@@ -13,7 +14,7 @@ language file to all of the translation files.
 
 ## Generating Language Files for Supported Locales [](id=generating-language-files-for-supported-locales)
 
-If you want to automatically generate files for all of the [locales supported by Liferay](https://docs.liferay.com/portal/7.0/propertiesdoc/portal.properties.html#Languages%20and%20Time%20Zones),
+If you want to automatically generate files for all of the [locales supported by Liferay](@platform-ref@/7.0-latest/propertiesdoc/portal.properties.html#Languages%20and%20Time%20Zones),
 you only have to do a little work in the build file of your application.
 
 1. Make sure your module's build includes the `com.liferay.lang.builder`
@@ -21,7 +22,7 @@ you only have to do a little work in the build file of your application.
 by putting the plugin in build script classpath.
 
 2. Make sure you have a default `Language.properties` file in
-   `src/main/content`. 
+   `src/main/resources/content`. 
 
 3. Run the `gradle buildLang` task from your project's root directory to generate
    default translation files.
@@ -44,7 +45,7 @@ Here's what a configuration of the `com.liferay.lang.builder` plugin looks in a
 
         buildscript {
             dependencies {
-                classpath ;com.liferay:com.liferay.gradle.plugins.lang.builder':latest.release'
+                classpath 'com.liferay:com.liferay.gradle.plugins.lang.builder:latest.release'
             }
 
             repositories {
@@ -107,7 +108,7 @@ steps above?
 
     buildscript {
         dependencies {
-            classpath ;com.liferay:com.liferay.gradle.plugins.lang.builder':latest.release'
+            classpath 'com.liferay:com.liferay.gradle.plugins.lang.builder:latest.release'
         }
 
         repositories {
@@ -119,7 +120,7 @@ steps above?
 
     apply plugin: "com.liferay.lang.builder"
 
-     buildLang {
+    buildLang {
        translateClientId = langTranslateClientId
        translateClientSecret = langTranslateClientSecret
     }
